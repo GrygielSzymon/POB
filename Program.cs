@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace typy_dannych
+namespace typy_danych
 {
     internal class Program
     {
