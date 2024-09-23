@@ -81,7 +81,7 @@ Console.WriteLine(ob1011); //11
 
 //To standardowy system liczbowy, którego urzywamy na co dzień. liczby są zapisywane bez żadnych prefiksów
 int decimalNumber = 255;
-Console.WriteLine(ddecimalNumber); //Wyjście: 255 
+Console.WriteLine(decimalNumber); //Wyjście: 255 
 
 //W C# możan pracować z systemami liczbowymi takimi jak:
 // dziesiętny
