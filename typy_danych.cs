@@ -6,8 +6,8 @@ System.Int64 i3 = 10;  //long
 short i5 = 10;
 long i4 = 10L;
 
-byte i6 = 10;
-sbyte i7 = 100;
+byte i6 = 10;    //0 do 255
+sbyte i7 = 100;  //-128 do 127
 
 int i = 10; //32 bity - 4 bajty
 int16 j = 10; // 16 bitów - 2 bajty
