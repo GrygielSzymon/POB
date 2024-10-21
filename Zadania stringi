@@ -1,0 +1,119 @@
+    //zad.1
+    /*
+    Console.Write("Podaj imię: ");
+    string firstName = Console.ReadLine();
+    Console.Write("Podaj nazwisko: ");
+    string lastName = Console.ReadLine();
+    string fullName = $"{firstName} {lastName}";
+    Console.WriteLine(fullName);
+
+    //zad.2
+    Console.Write("Podaj ścieżkę: ");
+    string path = Console.ReadLine();
+    Console.WriteLine($"Ścieżka: {path}");
+    Console.WriteLine($@"Ścieżka dosłowna: {path}");
+    
+    //zad.3
+    Console.Write("Podaj zdanie: ");
+    string sentence = Console.ReadLine();
+    Console.Write("podaj słowo do zamiany: ");
+    string wordreplace = Console.ReadLine();
+    Console.Write("podaj nowe słowo: ");
+    string newword = Console.ReadLine();
+    string newsentence = sentence.Replace(wordreplace, newword);
+    Console.Write("Nowe zdanie: ");
+    Console.Write(newsentence);
+
+    string[] words = sentence.Split(' '); 
+
+    Console.WriteLine("\nSłowa w zdaniu:");
+    foreach (string word in words)
+    {
+        Console.WriteLine(word);
+    }
+    
+    //zad.4
+    Console.Write("Podaj zdanie z różnymi separatorami: ");
+    string sentence = Console.ReadLine();
+    char[] separators = { ' ', ',', ';', '.', '!' };
+    string[] words = sentence.Split(separators, StringSplitOptions.RemoveEmptyEntries);
+    foreach (string word in words)
+    {   
+        Console.WriteLine(word);
+    }
+
+    //zad.5
+    Console.Write("Podaj zdanie z nadmierną ilością spacji: ");
+    string sentence = Console.ReadLine();
+    string newsentence= sentence.Trim();
+    Console.Write(newsentence);
+
+    //zad.6
+    Console.WriteLine("Wprowadź listę elementów oddzielonych przecinkami:");
+    string items = Console.ReadLine();
+    string[] elements = items.Split(',');
+    string joinedItems = string.Join(" - ", elements);
+    Console.WriteLine($"Połączone elemwnty: {joinedItems }");
+
+    //zad.7
+    Console.Write("Wprowadx tekst:");
+    string text = Console.ReadLine();
+    Console.WriteLine($"podciąg od 3 znaku: {text.Substring(2)}");
+    Console.WriteLine($"z wielkimi: {text.ToUpper()}");
+    Console.WriteLine($"z małymi: {text.ToLower()}");
+    Console.WriteLine($"czy zawiera text: {text.Contains("test")}");
+    Console.WriteLine($"index słowo taxt: {text.IndexOf("text"}");
+    */
+    //zad.8
+    Console.WriteLine("Wprowadź imie do formatowania");
+    string nameToFormat = Console.ReadLine();
+    formatedName = FormatName(nameToFormat);
+    Console.WriteLine($"sformatowae imie: {formatedName}");
+
+    //----------------------
+    Console.Write("Podaj zdanie do policzenia");
+    string texttocount = Console.ReadLine();
+    int wordcount = CountWords(texttocount);
+    Console.WriteLine($"Liczba słów w tekscie: {wordcount}");
+
+    //----------------------
+    Console.Write("Wprowadż tekst do wyszukiwania i zamiany");
+    string texttosearchandReplace = Console.ReadLine();
+    Console.Write("słoeo do wyszukania");
+    string wordtosearch = Console.ReadLine();
+    Console.Write("wprowdx nowe słoeo");
+    string wordToReplace = Console.ReadLine();
+    string replacedtext = SearchandReplace(texttosearchandReplace, wordtosearch, wordToReplace);
+    Console.WriteLine($"Tekst po zamianie{replacedtext}");
+
+
+
+
+    Console.ReadKey();
+}
+
+private static string SearchandReplace(string text, string oldword, string newword)
+{
+    if (string.IsNullOrEmpty(text) || string.IsNullOrEmpty(oldword) || string.IsNullOrEmpty(newword))
+    {
+        return text;
+    }
+    return text.Replace(oldword, newword);
+}
+
+private static int CountWords(string text)
+{
+    if(string.IsNullOrEmpty(text)) return 0;
+    string[] words = text.Split(new char[] { ' ', '\t', '\n' });
+    return words.Length;
+}
+
+private static string FormatName(string name)
+{
+    if (name == null)
+    {
+        return name;
+    }
+
+    return char.ToUpper(name[0]) + name.Substring(1).ToLower();
+}
