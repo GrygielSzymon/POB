@@ -39,3 +39,102 @@ Dla koła o promieniu 2:
 Pole: 12.5664
 Obwód: 12.5664
 
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Linq.Expressions;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp1
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            while (true)
+            {
+                Console.WriteLine("Wybierz jedną opcję");
+
+                Console.WriteLine("1. Obliczanie pola i obwodu kwadratu");
+                Console.WriteLine("2. Obliczanie pola i obwodu prostokąta");
+                Console.WriteLine("3. Obliczanie pola i obwodu koła");
+                Console.WriteLine("4. Wyjście");
+                Console.Write("Twój wybór: ");
+                string choice = Console.ReadLine();
+
+                switch (choice)
+                {
+                    case "1":
+                        SquareCalculations();
+                        break;
+                    case "2":
+                        RectangleCalculations();
+                        break;
+                    case "3":
+                        CircleCalculations();
+                        break;
+                    case "4":
+                        Console.WriteLine("Aby zamknąć program naciśnij dowolny przycisk");
+                        Console.ReadKey();
+                        Environment.Exit(0);
+                        break;
+                    default: 
+                        Console.WriteLine("Niepoprawny wybór. Spróbuj ponownie.");
+                        break;
+
+                }
+                Console.WriteLine("Nacisnij dowolny przycisk");
+                Console.ReadKey();
+            }
+            
+        }
+        private static void SquareCalculations()
+        {
+            double side = GetPositiveNumber("Podaj długość boku kwadratu: ");
+            double area = side * side;
+            double perimeter = 4 * side;
+            Console.WriteLine($"Pole kwadratu: {Math.Round(area, 2)}");
+            Console.WriteLine($"Obwód kwadratu: {Math.Round(perimeter, 2)}");
+        }
+
+
+        private static void RectangleCalculations()
+        {
+            double height = GetPositiveNumber("Podaj długość prostokąta: ");
+            double width = GetPositiveNumber("Podaj szerokość prostokąta: ");
+            double area = height * width;
+            double perimeter = 2 * (height + width);
+
+            Console.WriteLine($"Pole prostokąta: {Math.Round(area, 2)}");
+            Console.WriteLine($"Obwód prostokąta: {Math.Round(perimeter, 2)}");
+        }
+        private static void CircleCalculations()
+        {
+            double radius = GetPositiveNumber("Podaj promień koła: ");
+            double area = Math.PI * radius * radius;
+            double circumference = 2 * Math.PI * radius;
+
+            Console.WriteLine($"Pole koła: {Math.Round(area, 2)}");
+            Console.WriteLine($"Obwód koła: {Math.Round(circumference, 2)}");
+        }
+        private static double GetPositiveNumber(string message)
+        {
+            double number;
+            while (true)
+            {
+                Console.Write(message);
+                string input = Console.ReadLine();
+                if (double.TryParse(input, out number) && number > 0)
+                {
+                    return number;
+                }
+                Console.WriteLine("Wprowadź liczbę dodatnią.");
+            }
+        }
+
+        
+
+        
+    }
+}
