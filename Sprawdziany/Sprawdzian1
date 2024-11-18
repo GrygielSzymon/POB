@@ -1,0 +1,70 @@
+Zadanie: Kalkulator BMI
+1. Uruchomienie programu:
+	Program uruchamia się w pętli nieskończonej, wyświetlając menu z opcjami do 	wyboru.
+	Użytkownik może wybrać jedną z opcji: obliczenie BMI dla dorosłych, dzieci, 	młodzieży lub zakończenie programu.
+2. Opcje menu:
+	Opcja 1: Obliczenie BMI dla dorosłych.
+	Opcja 2: Obliczenie BMI dla dzieci.
+	Opcja 3: Obliczenie BMI dla młodzieży.
+	Opcja 4: Zakończenie programu.
+3. Obliczenia:
+	Dorośli:
+		Pobierz wagę (kg) i wzrost (m) od użytkownika.
+		Oblicz BMI (weight / (height * height)).
+ 		Wyświetl wynik oraz kategorię BMI (np. niedowaga, waga prawidłowa, 			nadwaga, otyłość).
+	Dzieci:
+		Pobierz wagę (kg), wzrost (m) oraz wiek od użytkownika.
+		Oblicz BMI (weight / (height * height)).
+		Wyświetl wynik oraz kategorię BMI na podstawie wieku.
+	Młodzież:
+		Pobierz wagę (kg), wzrost (m) oraz wiek od użytkownika.
+		Oblicz BMI (weight / (height * height)).
+		Wyświetl wynik oraz kategorię BMI na podstawie wieku.
+4. Walidacja danych:
+	Program sprawdza, czy wprowadzone wartości są dodatnie i czy są liczbami 	całkowitymi.
+	W przypadku błędnych danych, użytkownik jest proszony o ponowne wprowadzenie 	wartości.
+	Funkcja GetPositiveNumber dodatkowo sprawdza, czy wprowadzona wartość jest 	liczbą całkowitą oraz obsługuje wyjątek OverflowException.
+5. Obsługa wyjątków:
+	Program zawiera funkcje do dzielenia z obsługą wyjątków.
+	Dzielenie:
+	Funkcja Divide sprawdza, czy dzielnik nie jest zerem. W przypadku dzielenia przez 	zero, rzucany jest wyjątek DivideByZeroException.
+	Jeśli zarówno dzielna, jak i dzielnik są zerami, rzucany jest wyjątek 	InvalidOperationException.
+6. Dodatkowe obliczenia:
+	Dorośli, dzieci, młodzież:
+		Funkcja CalculateBMI sprawdza, czy waga i wzrost są większe od zera. W 		przypadku wartości mniejszych lub równych zeru, rzucany jest wyjątek 			ArgumentOutOfRangeException.
+7. Wyświetlanie błędów:
+		Funkcja DisplayError wyświetla komunikaty błędów w różnych kolorach w 		zależności od typu
+	wyjątku:
+		Czerwony dla ArgumentOutOfRangeException.
+		Żółty dla FormatException.
+		Magenta dla innych wyjątków.
+8. Przykładowe działanie programu:
+		Użytkownik wprowadza wagę, wzrost i wiek.
+		Program oblicza BMI na podstawie wprowadzonych danych.
+		Wyniki są wyświetlane na ekranie wraz z kategorią BMI.
+		W przypadku wystąpienia błędów, odpowiednie komunikaty są 				wyświetlane.
+	Kategorie BMI dla dorosłych:
+		Niedowaga: BMI < 18.5
+		Waga prawidłowa: 18.5 ≤ BMI < 25
+		Nadwaga: 25 ≤ BMI < 30
+		Otyłość: BMI ≥ 30
+	Przykłady wprowadzenia danych:
+		Prawidłowe wprowadzenie danych:
+		Waga: 70 (kg)
+		Wzrost: 1.75 (m)
+		Wynik: BMI: 22.86 (waga prawidłowa)
+	Błędne wprowadzenie danych:
+		Waga: -70 (kg)
+Komunikat: Błąd: Waga musi być większa od zera (wyświetlany na czerwono)
+		Wzrost: 0 (m)
+		Komunikat: Błąd: Wzrost musi być większy od zera (wyświetlany na 			czerwono)
+		Waga: 70 (kg), Wzrost: "abc"
+		Komunikat: Błąd: Nieprawidłowy format liczby (wyświetlany na żółto)
+	Przykłady komunikatów błędów:
+			ArgumentOutOfRangeException:
+			Komunikat: Błąd: Waga musi być większa od zera (wyświetlany na 			czerwono)
+			Komunikat: Błąd: Wzrost musi być większy od zera (wyświetlany na 			czerwono)
+			FormatException:
+			Komunikat: Błąd: Nieprawidłowy format liczby (wyświetlany na 				żółto)
+	Inne wyjątki:
+			Komunikat: Nieoczekiwany błąd: [opis błędu] (wyświetlany na 				magenta)
