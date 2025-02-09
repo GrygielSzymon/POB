@@ -1,0 +1,14 @@
+C:\Users\Administrator\Documents\Visual Studio 2022\Pizza\bin\Debug\net8.0\Pizza.exe
+C:\Users\Administrator\Documents\Visual Studio 2022\Pizza\bin\Debug\net8.0\Pizza.deps.json
+C:\Users\Administrator\Documents\Visual Studio 2022\Pizza\bin\Debug\net8.0\Pizza.runtimeconfig.json
+C:\Users\Administrator\Documents\Visual Studio 2022\Pizza\bin\Debug\net8.0\Pizza.dll
+C:\Users\Administrator\Documents\Visual Studio 2022\Pizza\bin\Debug\net8.0\Pizza.pdb
+C:\Users\Administrator\Documents\Visual Studio 2022\Pizza\obj\Debug\net8.0\Pizza.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Administrator\Documents\Visual Studio 2022\Pizza\obj\Debug\net8.0\Pizza.AssemblyInfoInputs.cache
+C:\Users\Administrator\Documents\Visual Studio 2022\Pizza\obj\Debug\net8.0\Pizza.AssemblyInfo.cs
+C:\Users\Administrator\Documents\Visual Studio 2022\Pizza\obj\Debug\net8.0\Pizza.csproj.CoreCompileInputs.cache
+C:\Users\Administrator\Documents\Visual Studio 2022\Pizza\obj\Debug\net8.0\Pizza.dll
+C:\Users\Administrator\Documents\Visual Studio 2022\Pizza\obj\Debug\net8.0\refint\Pizza.dll
+C:\Users\Administrator\Documents\Visual Studio 2022\Pizza\obj\Debug\net8.0\Pizza.pdb
+C:\Users\Administrator\Documents\Visual Studio 2022\Pizza\obj\Debug\net8.0\Pizza.genruntimeconfig.cache
+C:\Users\Administrator\Documents\Visual Studio 2022\Pizza\obj\Debug\net8.0\ref\Pizza.dll
