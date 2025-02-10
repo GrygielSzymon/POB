@@ -1,0 +1,233 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+enum DyscyplinaSportowa
+{
+    PilkaNozna,
+    Koszykowka,
+    Siatkowka,
+    Lekkoatletyka,
+    Tenis,
+    Hokej
+}
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        // Inicjalizacja danych
+        string[] druzyny = { "Orły Warszawa", "Smoki Kraków", "Lwy Gdańsk", "Sokoły Wrocław", "Wilki Poznań", "Pantery Katowice", 
+                             "Jastrzębie Łódź", "Rekiny Szczecin", "Tygrysy Lublin", "Borsuki Białystok" };
+
+        List<(string imie, string nazwisko, DyscyplinaSportowa dyscyplina, int wiek, int punkty)> zawodnicy = new List<(string, string, DyscyplinaSportowa, int, int)>
+        {
+            ("Jan", "Kowalski", DyscyplinaSportowa.PilkaNozna, 22, 10),
+            ("Anna", "Nowak", DyscyplinaSportowa.Koszykowka, 24, 15),
+            ("Piotr", "Wiśniewski", DyscyplinaSportowa.Siatkowka, 20, 8),
+            ("Maria", "Wójcik", DyscyplinaSportowa.Lekkoatletyka, 26, 12),
+            ("Krzysztof", "Kowalczyk", DyscyplinaSportowa.Tenis, 28, 18),
+            ("Agnieszka", "Kamińska", DyscyplinaSportowa.Hokej, 23, 7),
+            ("Marek", "Lewandowski", DyscyplinaSportowa.PilkaNozna, 25, 14),
+            ("Ewa", "Dąbrowska", DyscyplinaSportowa.Koszykowka, 21, 9),
+            ("Tomasz", "Zieliński", DyscyplinaSportowa.Siatkowka, 27, 11),
+            ("Magdalena", "Szymańska", DyscyplinaSportowa.Lekkoatletyka, 22, 13),
+            ("Andrzej", "Woźniak", DyscyplinaSportowa.Tenis, 29, 16),
+            ("Katarzyna", "Kozłowska", DyscyplinaSportowa.Hokej, 24, 6),
+            ("Paweł", "Jankowski", DyscyplinaSportowa.PilkaNozna, 23, 17),
+            ("Monika", "Mazur", DyscyplinaSportowa.Koszykowka, 26, 10),
+            ("Grzegorz", "Kwiatkowski", DyscyplinaSportowa.Siatkowka, 30, 19)
+        };
+
+        Dictionary<string, List<(string imie, string nazwisko, DyscyplinaSportowa dyscyplina, int wiek, int punkty)>> druzynyZawodnicy = new Dictionary<string, List<(string, string, DyscyplinaSportowa, int, int)>>();
+
+        // Przypisanie zawodników do drużyn
+        Random rand = new Random();
+        foreach (var zawodnik in zawodnicy)
+        {
+            string druzyna = druzyny[rand.Next(druzyny.Length)];
+            if (!druzynyZawodnicy.ContainsKey(druzyna))
+            {
+                druzynyZawodnicy[druzyna] = new List<(string, string, DyscyplinaSportowa, int, int)>();
+            }
+            druzynyZawodnicy[druzyna].Add(zawodnik);
+        }
+
+        // Menu
+        bool exit = false;
+        while (!exit)
+        {
+            Console.WriteLine("1. Wyświetl drużynę");
+            Console.WriteLine("2. Dodaj zawodnika do drużyny");
+            Console.WriteLine("3. Usuń zawodnika");
+            Console.WriteLine("4. Wyświetl zawodników danej dyscypliny");
+            Console.WriteLine("5. zaktualizuj punkty zawodnika");
+            Console.WriteLine("6. Wyszukaj zawodnika po nazwisku");
+            Console.WriteLine("7. Wyjście");
+            Console.Write("Wybierz opcję: ");
+
+            if (!int.TryParse(Console.ReadLine(), out int opcja))
+            {
+                Console.WriteLine("Niepoprawna opcja. Spróbuj ponownie.");
+                continue;
+            }
+
+            switch (opcja)
+            {
+                case 1:
+                    Console.Write("Podaj nazwę drużyny: ");
+                    string nazwaDruzyny = Console.ReadLine();
+                    WyswietlDruzyne(nazwaDruzyny, druzynyZawodnicy);
+                    break;
+                case 2:
+                    Console.Write("Podaj nazwę drużyny: ");
+                    string druzyna = Console.ReadLine();
+                    Console.Write("Podaj imię zawodnika: ");
+                    string imie = Console.ReadLine();
+                    Console.Write("Podaj nazwisko zawodnika: ");
+                    string nazwisko = Console.ReadLine();
+                    Console.Write("Podaj dyscyplinę sportową (0-PilkaNozna, 1-Koszykowka, 2-Siatkowka, 3-Lekkoatletyka, 4-Tenis, 5-Hokej): ");
+                    if (Enum.TryParse(Console.ReadLine(), out DyscyplinaSportowa dyscyplina))
+                    {
+                        Console.Write("Podaj wiek zawodnika: ");
+                        if (int.TryParse(Console.ReadLine(), out int wiek))
+                        {
+                            DodajZawodnikaDoDruzyny(druzyna, imie, nazwisko, dyscyplina, wiek, druzynyZawodnicy);
+                        }
+                        else
+                        {
+                            Console.WriteLine("Niepoprawny wiek.");
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("Niepoprawna dyscyplina.");
+                    }
+                    break;
+                case 3:
+                    Console.Write("Podaj nazwę drużyny: ");
+                    string druzynaDoUsuniecia = Console.ReadLine();
+                    Console.Write("Podaj imię zawodnika: ");
+                    string imieDoUsuniecia = Console.ReadLine();
+                    Console.Write("Podaj nazwisko zawodnika: ");
+                    string nazwiskoDoUsuniecia = Console.ReadLine();
+                    UsunZawodnika(druzynaDoUsuniecia, imieDoUsuniecia, nazwiskoDoUsuniecia, druzynyZawodnicy);
+                    break;
+                case 4:
+                    Console.Write("Podaj dyscyplinę sportową (0-    PilkaNozna, 1-    Koszykowka, 2-    Siatkowka, " +
+                        "3-    Lekkoatletyka, 4-    Tenis, 5-    Hokej): ");
+                    if (Enum.TryParse(Console.ReadLine(), out DyscyplinaSportowa dyscyplinaDoWyswietlenia))
+                    {
+                        PokazZawodnikowDyscypliny(dyscyplinaDoWyswietlenia, zawodnicy);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Niepoprawna dyscyplina.");
+                    }
+                    break;
+                case 5:
+                    Console.Write("Podaj nazwę drużyny: ");
+                    string druzynaDoAktualizacji = Console.ReadLine();
+                    Console.Write("Podaj imię zawodnika: ");
+                    string imieDoAktualizacji = Console.ReadLine();
+                    Console.Write("Podaj nazwisko zawodnika: ");
+                    string nazwiskoDoAktualizacji = Console.ReadLine();
+                    Console.Write("Podaj nową liczbę punktów: ");
+                    if (int.TryParse(Console.ReadLine(), out int nowePunkty))
+                    {
+                        //AktualizujPunkty(druzynaDoAktualizacji, imieDoAktualizacji, nazwiskoDoAktualizacji, nowePunkty, druzynyZawodnicy);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Niepoprawna liczba punktów.");
+                    }
+                    break;
+                case 6:
+                    Console.Write("Podaj nazwisko zawodnika: ");
+                    string nazwiskoDoWyszukania = Console.ReadLine();
+                    WyszukajZawodnika(nazwiskoDoWyszukania, druzynyZawodnicy);
+                    break;
+                case 7:
+                    exit = true;
+                    return;
+                default:
+                    Console.WriteLine("Niepoprawna opcja. Spróbuj ponownie.");
+                    break;
+            }
+        }
+    }
+
+    static void WyswietlDruzyne(string nazwaDruzyny, Dictionary<string, List<(string imie, string nazwisko, DyscyplinaSportowa dyscyplina, int wiek, int punkty)>> druzyny)
+    {
+        if (druzyny.ContainsKey(nazwaDruzyny))
+        {
+            Console.WriteLine($"Zawodnicy drużyny {nazwaDruzyny}:");
+            foreach (var zawodnik in druzyny[nazwaDruzyny])
+            {
+                Console.WriteLine($"{zawodnik.imie} {zawodnik.nazwisko}, {zawodnik.dyscyplina}, Wiek: {zawodnik.wiek}, Punkty: {zawodnik.punkty}");
+            }
+        }
+        else
+        {
+            Console.WriteLine("Drużyna nie istnieje.");
+        }
+    }
+
+    static void DodajZawodnikaDoDruzyny(string druzyna, string imie, string nazwisko, DyscyplinaSportowa dyscyplina, int wiek, Dictionary<string, List<(string imie, string nazwisko, DyscyplinaSportowa dyscyplina, int wiek, int punkty)>> druzyny)
+    {
+        if (!druzyny.ContainsKey(druzyna))
+        {
+            druzyny[druzyna] = new List<(string, string, DyscyplinaSportowa, int, int)>();
+        }
+        druzyny[druzyna].Add((imie, nazwisko, dyscyplina, wiek, 0));
+        Console.WriteLine("Zawodnik dodany.");
+    }
+
+    static void UsunZawodnika(string druzyna, string imie, string nazwisko, Dictionary<string, List<(string imie, string nazwisko, DyscyplinaSportowa dyscyplina, int wiek, int punkty)>> druzyny)
+    {
+        if (druzyny.ContainsKey(druzyna))
+        {
+            var zawodnikDoUsuniecia = druzyny[druzyna].FirstOrDefault(z => z.imie == imie && z.nazwisko == nazwisko);
+            if (zawodnikDoUsuniecia != default)
+            {
+                druzyny[druzyna].Remove(zawodnikDoUsuniecia);
+                Console.WriteLine("Zawodnik usunięty.");
+            }
+            else
+            {
+                Console.WriteLine("Zawodnik nie znaleziony.");
+            }
+        }
+        else
+        {
+            Console.WriteLine("Drużyna nie istnieje.");
+        }
+    }
+
+    static void PokazZawodnikowDyscypliny(DyscyplinaSportowa dyscyplina, List<(string imie, string nazwisko, DyscyplinaSportowa dyscyplina, int wiek, int punkty)> zawodnicy)
+    {
+        Console.WriteLine($"Zawodnicy uprawiający {dyscyplina}:");
+        foreach (var zawodnik in zawodnicy.Where(z => z.dyscyplina == dyscyplina))
+        {
+            Console.WriteLine($"{zawodnik.imie} {zawodnik.nazwisko}, Wiek: {zawodnik.wiek}, Punkty: {zawodnik.punkty}");
+        }
+    }
+
+    static void WyszukajZawodnika(string nazwisko, Dictionary<string, List<(string imie, string nazwisko, DyscyplinaSportowa dyscyplina, int wiek, int punkty)>> druzyny)
+    {
+        bool znaleziono = false;
+        foreach (var druzyna in druzyny)
+        {
+            var zawodnik = druzyna.Value.FirstOrDefault(z => z.nazwisko == nazwisko);
+            if (zawodnik != default)
+            {
+                Console.WriteLine($"{zawodnik.imie} {zawodnik.nazwisko}, {zawodnik.dyscyplina}, Wiek: {zawodnik.wiek}, Punkty: {zawodnik.punkty}, Drużyna: {druzyna.Key}");
+                znaleziono = true;
+            }
+        }
+        if (!znaleziono)
+        {
+            Console.WriteLine("Zawodnik nie znaleziony.");
+        }
+    }
+}
