@@ -1,0 +1,57 @@
+Zadanie: System Zamawiania Pizzy
+Cel:
+Celem zadania jest stworzenie prostego systemu zamawiania pizzy w języku C# (.NET 9), w którym użytkownik może przeglądać menu, wybierać pizzę i składać zamówienie. Kod nie może zawierać konstruktorów, dziedziczenia, metod statycznych oraz tworzenia obiektów w inny sposób niż poprzez przypisanie wartości do pól.
+
+Wymagania funkcjonalne:
+Klasa Pizza (📄 Pizza.cs)
+
+Przechowuje informacje o pizzy:
+Name (string) – nazwa pizzy
+Size (int) – rozmiar pizzy w centymetrach
+Price (decimal) – cena pizzy
+Description (string) – opis pizzy
+Metoda:
+DisplayPizzaInfo() – wyświetla informacje o pizzy
+Klasa Menu (📄 Menu.cs)
+
+Zawiera listę dostępnych pizz (przechowywanych w słowniku Dictionary<string, Pizza>)
+Metody:
+AddPizza(name, size, price, description) – dodaje pizzę do menu
+DisplayMenu() – wyświetla wszystkie pizze w menu
+FindPizzaByName(name) – zwraca obiekt pizzy na podstawie nazwy lub null, jeśli nie znaleziono
+Klasa Order (📄 Order.cs)
+
+Przechowuje zamówione pizze (List<Pizza>)
+Właściwość:
+TotalPrice – przechowuje całkowitą cenę zamówienia
+Metody:
+AddPizzaToOrder(pizza) – dodaje pizzę do zamówienia
+DisplayOrder() – wyświetla wszystkie pizze w zamówieniu oraz łączny koszt
+Klasa Program (📄 Program.cs)
+
+Główna klasa programu
+Działanie programu:
+Tworzy obiekt Menu i dodaje kilka domyślnych pizz
+Wyświetla menu użytkownikowi
+Pyta użytkownika o wybór pizzy
+Sprawdza, czy pizza istnieje w menu
+Jeśli istnieje – dodaje ją do zamówienia
+Wyświetla podsumowanie zamówienia
+Kończy działanie
+Wymagania techniczne:
+✅ Brak konstruktorów – Wszystkie wartości muszą być przypisywane po utworzeniu obiektów
+✅ Brak dziedziczenia – Każda klasa działa niezależnie
+✅ Brak metod statycznych – Wszystkie metody działają na instancjach klas
+✅ Obsługa wyjątkowych sytuacji – Sprawdzenie, czy użytkownik wybrał istniejącą pizzę
+
+📂 Struktura katalogów i plików
+
+📁 PizzaOrderingSystem
+│── 📁 src
+│   │── 📄 Program.cs
+│   │── 📄 Pizza.cs
+│   │── 📄 Menu.cs
+│   │── 📄 Order.cs
+│── 📁 obj  (generowane przez kompilator)
+│── 📁 bin  (kompilowane pliki)
+│── 📄 PizzaOrderingSystem.csproj
