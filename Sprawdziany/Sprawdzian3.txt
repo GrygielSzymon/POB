@@ -1,0 +1,31 @@
+Zadanie na kolokwium – Klasa Zwierzę (Animal) w C#
+Instrukcja:
+1. Zapoznaj się z poniższymi zagadnieniami.
+2. Napisz program w języku C#, który wykorzysta podane elementy.
+3. Zadbaj o poprawne użycie konstruktorów oraz poprawność danych wejściowych.
+4. Przetestuj program na różnych przypadkach.
+Wymagania:
+1. Definicja klasy i enum:
+o Utwórz klasę Animal.
+o Utwórz enum AnimalType z wartościami: Ssaki, Ptaki, Gady, Płazy, Ryby, Owady.
+2. Pola prywatne i właściwości:
+o Zdefiniuj prywatne pola _name i _species (gatunek).
+o Utwórz właściwości Name i Species, które nie mogą być puste.
+3. Konstruktory:
+o Stwórz konstruktor domyślny inicjalizujący domyślne wartości obiektu.
+o Dodaj konstruktor z jednym parametrem (name).
+o Dodaj konstruktor z dwoma parametrami (name, species).
+o Dodaj konstruktor z trzema parametrami (name, species, type).
+o Dodaj konstruktor z czterema parametrami (name, species, type, birthDate) z walidacją
+daty.
+o Dodaj konstruktor kopiujący.
+4. Metoda ToString():
+o Nadpisz metodę ToString(), aby zwracała czytelną reprezentację obiektu.
+5. Interakcja z użytkownikiem:
+o Stwórz metodę InputAnimalData(), która pozwala użytkownikowi wprowadzić dane
+zwierzęcia.
+o Upewnij się, że metoda obsługuje błędne wejścia (np. niepoprawny format daty).
+6. Program główny (Main):
+o Utwórz obiekt Animal za pomocą różnych konstruktorów.
+o Wywołaj metody klasy i wyświetl wyniki.
+o Sprawdź działanie konstruktora kopiującego.
