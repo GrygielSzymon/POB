@@ -1,0 +1,14 @@
+C:\Users\egzamin\Desktop\sgfsdas\TaskApp\obj\Debug\net9.0\TaskApp.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\egzamin\Desktop\sgfsdas\TaskApp\obj\Debug\net9.0\TaskApp.AssemblyInfoInputs.cache
+C:\Users\egzamin\Desktop\sgfsdas\TaskApp\obj\Debug\net9.0\TaskApp.AssemblyInfo.cs
+C:\Users\egzamin\Desktop\sgfsdas\TaskApp\obj\Debug\net9.0\TaskApp.csproj.CoreCompileInputs.cache
+C:\Users\egzamin\Desktop\sgfsdas\TaskApp\bin\Debug\net9.0\TaskApp.exe
+C:\Users\egzamin\Desktop\sgfsdas\TaskApp\bin\Debug\net9.0\TaskApp.deps.json
+C:\Users\egzamin\Desktop\sgfsdas\TaskApp\bin\Debug\net9.0\TaskApp.runtimeconfig.json
+C:\Users\egzamin\Desktop\sgfsdas\TaskApp\bin\Debug\net9.0\TaskApp.dll
+C:\Users\egzamin\Desktop\sgfsdas\TaskApp\bin\Debug\net9.0\TaskApp.pdb
+C:\Users\egzamin\Desktop\sgfsdas\TaskApp\obj\Debug\net9.0\TaskApp.dll
+C:\Users\egzamin\Desktop\sgfsdas\TaskApp\obj\Debug\net9.0\refint\TaskApp.dll
+C:\Users\egzamin\Desktop\sgfsdas\TaskApp\obj\Debug\net9.0\TaskApp.pdb
+C:\Users\egzamin\Desktop\sgfsdas\TaskApp\obj\Debug\net9.0\TaskApp.genruntimeconfig.cache
+C:\Users\egzamin\Desktop\sgfsdas\TaskApp\obj\Debug\net9.0\ref\TaskApp.dll
